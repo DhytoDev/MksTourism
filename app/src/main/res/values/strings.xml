@@ -5,4 +5,10 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+    <string name="about_mks_city">Kota Makassar adalah ibukota Provinsi Sulawesi Selatan. Pada tahun 1971 hingga 1999 secara resmi dikenal sebagai Ujung Pandang.
+    Makassar merupakan kota internasional serta terbesar di kawasan Indonesia Timur dan pada masa lalu pernah menjadi Ibukota Negara Indonesia Timur Provinsi Sulawesi. </string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
