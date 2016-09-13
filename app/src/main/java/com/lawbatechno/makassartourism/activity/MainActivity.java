@@ -1,4 +1,4 @@
-package com.lawbatechno.makassartourism;
+package com.lawbatechno.makassartourism.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,7 +16,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.lawbatechno.makassartourism.R;
 import com.lawbatechno.makassartourism.fragment.AboutMakassarFragment;
+import com.lawbatechno.makassartourism.fragment.GalleryFragment;
 import com.lawbatechno.makassartourism.fragment.WebPemkotFragment;
 
 public class MainActivity extends AppCompatActivity
@@ -31,26 +33,11 @@ public class MainActivity extends AppCompatActivity
 
         if (savedInstanceState == null) {
             Fragment fragment = null;
-            Class fragmentClass = null;
-            fragmentClass = AboutMakassarFragment.class;
-            try {
-                fragment = (Fragment) fragmentClass.newInstance();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            fragment = new AboutMakassarFragment() ;
 
             FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
         }
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -103,29 +90,33 @@ public class MainActivity extends AppCompatActivity
         Intent i ;
 
         Fragment fragment = null;
-        Class fragmentClass = null;
+
+        String title = getString(R.string.app_name);
 
         if (id == R.id.nav_about_mks) {
-            fragmentClass = AboutMakassarFragment.class ;
+            fragment = new AboutMakassarFragment() ;
         } else if (id == R.id.nav_tourist) {
-            fragmentClass = AboutMakassarFragment.class ;
+            i = new Intent(MainActivity.this, TourismDestActivity.class);
+            startActivity(i);
         } else if (id == R.id.nav_web_pemkot) {
-            fragmentClass = WebPemkotFragment.class ;
+            fragment = new WebPemkotFragment();
+            title = "Pemkot Website";
         } else if (id == R.id.nav_gallery) {
-            fragmentClass = AboutMakassarFragment.class ;
+            fragment = new GalleryFragment() ;
+            title = "Gallery";
         } else if (id == R.id.nav_video) {
-            fragmentClass = AboutMakassarFragment.class ;
+            fragment = new AboutMakassarFragment();
+            title = "Video";
         } else if (id == R.id.nav_share) {
-            fragmentClass = AboutMakassarFragment.class ;
+            fragment = new AboutMakassarFragment() ;
         }
 
-        try {
-            fragment = (Fragment) fragmentClass.newInstance();
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (fragment != null) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
+
+            setTitle(title);
         }
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
