@@ -105,8 +105,8 @@ public class MainActivity extends AppCompatActivity
             fragment = new GalleryFragment() ;
             title = "Gallery";
         } else if (id == R.id.nav_video) {
-            fragment = new AboutMakassarFragment();
-            title = "Video";
+            i = new Intent(MainActivity.this, VideoActivity.class);
+            startActivity(i);
         } else if (id == R.id.nav_share) {
             fragment = new AboutMakassarFragment() ;
         }

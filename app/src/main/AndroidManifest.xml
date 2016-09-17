@@ -43,6 +43,10 @@
         <activity
             android:name=".activity.TourismDestActivity"
             android:label="@string/title_activity_tourism_dest"></activity>
+
+        <activity
+            android:name=".activity.VideoActivity"
+            android:label="@string/title_activity_tourism_dest"></activity>
     </application>
 
 </manifest>
